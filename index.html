@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐍 贪吃蛇 — 登录</title>
+  <meta name="description" content="赛博风格网页贪吃蛇游戏，登录后即可开始挑战！" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 动态背景光球 -->
+  <div class="bg-orbs">
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-fuchsia"></div>
+  </div>
+
+  <!-- 页面主体 -->
+  <div class="page-wrapper">
+    <div class="glass-card" id="authCard">
+      <!-- 标题 -->
+      <h1 class="gradient-title">🐍 贪吃蛇</h1>
+      <p class="subtitle">登录或注册以开始游戏</p>
+
+      <!-- Tab 切换 -->
+      <div class="tabs">
+        <button class="tab-btn active" id="tabLogin" onclick="switchTab('login')">登录</button>
+        <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">注册</button>
+      </div>
+
+      <!-- 提示消息 -->
+      <div class="message" id="authMessage"></div>
+
+      <!-- 登录表单 -->
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="loginUsername">用户名</label>
+          <input type="text" id="loginUsername" placeholder="请输入用户名" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">密码</label>
+          <input type="password" id="loginPassword" placeholder="请输入密码" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn-neon" id="loginBtn">登 录</button>
+      </form>
+
+      <!-- 注册表单 -->
+      <form id="registerForm" class="hidden" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label for="regUsername">用户名</label>
+          <input type="text" id="regUsername" placeholder="设置用户名（3-16位）" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label for="regPassword">密码</label>
+          <input type="password" id="regPassword" placeholder="设置密码（6位以上）" required autocomplete="new-password" />
+        </div>
+        <div class="form-group">
+          <label for="regConfirm">确认密码</label>
+          <input type="password" id="regConfirm" placeholder="再次输入密码" required autocomplete="new-password" />
+        </div>
+        <button type="submit" class="btn-neon btn-fuchsia" id="regBtn">注 册</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐍 贪吃蛇 — 游戏</title>
+  <meta name="description" content="在赛博风格的画布上操控贪吃蛇，刷新你的最高分！" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 动态背景光球 -->
+  <div class="bg-orbs">
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-fuchsia"></div>
+  </div>
+
+  <!-- 页面主体 -->
+  <div class="page-wrapper">
+    <div class="game-layout">
+
+      <!-- 顶部信息栏 -->
+      <div class="game-header glass-panel">
+        <div class="user-info">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <span class="user-name" id="userName">用户</span>
+        </div>
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-label">当前分数</span>
+            <span class="stat-value" id="currentScore">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">最高分</span>
+            <span class="stat-value fuchsia" id="highScore">0</span>
+          </div>
+        </div>
+        <button class="btn-outline" id="logoutBtn" onclick="handleLogout()">退出登录</button>
+      </div>
+
+      <!-- 游戏标题 -->
+      <h1 class="gradient-title-sm">🎮 开始你的挑战</h1>
+
+      <!-- Canvas 游戏画布 -->
+      <div class="canvas-container">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+      </div>
+
+      <!-- 游戏控制按钮 -->
+      <div class="game-controls">
+        <button class="btn-neon" id="startBtn" onclick="startGame()">▶ 开始游戏</button>
+        <button class="btn-neon btn-fuchsia" id="pauseBtn" onclick="togglePause()" disabled>⏸ 暂停</button>
+      </div>
+
+      <!-- 移动端方向控制 -->
+      <div class="mobile-controls">
+        <div class="row">
+          <button class="dir-btn" onclick="setDirection('UP')">↑</button>
+        </div>
+        <div class="row">
+          <button class="dir-btn" onclick="setDirection('LEFT')">←</button>
+          <button class="dir-btn" onclick="setDirection('DOWN')">↓</button>
+          <button class="dir-btn" onclick="setDirection('RIGHT')">→</button>
+        </div>
+      </div>
+
+      <!-- 数据面板 -->
+      <div class="data-panels">
+        <!-- 历史得分 -->
+        <div class="glass-panel">
+          <div class="panel-title"><span class="icon">📊</span> 历史得分</div>
+          <ul class="record-list" id="scoreHistory">
+            <li class="empty-tip">暂无记录</li>
+          </ul>
+        </div>
+
+        <!-- 排行榜 -->
+        <div class="glass-panel">
+          <div class="panel-title"><span class="icon">🏆</span> 排行榜</div>
+          <ul class="record-list" id="leaderboard">
+            <li class="empty-tip">暂无记录</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 游戏结束弹窗 -->
+  <div class="modal-overlay" id="gameOverModal">
+    <div class="modal-content">
+      <h2>游戏结束</h2>
+      <div class="final-score-label">最终得分</div>
+      <div class="final-score" id="finalScore">0</div>
+      <div class="modal-actions">
+        <button class="btn-neon" onclick="restartGame()">🔄 再来一局</button>
+        <button class="btn-neon btn-fuchsia" onclick="closeModal()">📊 查看记录</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
